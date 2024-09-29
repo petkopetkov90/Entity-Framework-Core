@@ -1,2 +1,2 @@
 # Entity Framework Core
- Entity Framework Core - SoftUni
+ *Entity Framework Core - SoftUni*
