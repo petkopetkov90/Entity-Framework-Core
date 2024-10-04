@@ -1,0 +1,54 @@
+﻿@using BlogApp.Common.Enumerations
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using BlogApp.Services.Models
+@model ArticleInputModel;
+
+@{
+    ViewBag.Title = "Create a New Article";
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form asp-action="Create" method="post">
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label">Title</label>
+                <input asp-for="Title" class="form-control" aria-required="true" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Content" class="form-label">Content</label>
+                <input asp-for="Content" class="form-control" aria-required="true" />
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Genre" class="form-label">Genre</label>
+                <select asp-for="@Model.Genre" class="form-control">
+                    @foreach (var genre in Enum.GetValues(typeof(Genre)))
+                    {
+                        <option value="@((int)genre)">@genre</option>
+                    }
+                </select>
+                <span asp-validation-for="Genre" class="text-danger"></span>
+            </div>
+            <div class="mb-3 text-center">
+                <input class="btn btn-primary" type="submit" value="Add" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

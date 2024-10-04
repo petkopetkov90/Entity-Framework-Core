@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<div class="text-center" , style="background-color: blue; color: white; padding: 100px; text-align: center;">
+    <h1>The Best Blog</h1>
+    <p>Welcome to the best blog ever!</p>
+</div>
